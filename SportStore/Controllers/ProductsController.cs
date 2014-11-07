@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Mvc;
 using SportStore.Models;
 
 namespace SportStore.Controllers
@@ -14,7 +12,7 @@ namespace SportStore.Controllers
 
         public ProductsController()
         {
-            Repository = new ProductRepository();
+            Repository = (IRepository)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IRepository));
         }
 
         public IEnumerable<Product> GetProducts()
@@ -22,7 +20,14 @@ namespace SportStore.Controllers
             return Repository.Products;
         }
 
-        public Product GetProduct(int id)
+        public IHttpActionResult GetProduct(int id)
+        {
+            Product result = Repository.Products.FirstOrDefault(p => p.Id == id);
+            return result == null ? (IHttpActionResult)BadRequest("No Product Found") : Ok(result);
+        }
+
+        //Same method as above -> different style
+/*      public Product GetProduct(int id)
         {
             Product result = Repository.Products.FirstOrDefault(p => p.Id == id);
             if (result == null)
@@ -33,13 +38,22 @@ namespace SportStore.Controllers
             {
                 return result;
             }
-        }
+        }*/
 
-        public async Task PostProduct(Product product)
+        public async Task<IHttpActionResult> PostProduct(Product product)
         {
-            await Repository.SaveProductAsync(product);
+            if (ModelState.IsValid)
+            {
+                await Repository.SaveProductAsync(product);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
+        [Authorize(Roles = "Administrators")]
         public async Task DeleteProduct(int id)
         {
             await Repository.DeleteProductAsync(id);

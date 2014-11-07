@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using SportStore.Infrastructure;
 
 namespace SportStore.WebAPI
 {
@@ -21,6 +22,7 @@ namespace SportStore.WebAPI
             );
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.DependencyResolver = new CustomResolver();
         }
     }
 }
