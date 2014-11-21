@@ -5,7 +5,7 @@ namespace SportStore.Models
 {
     public class ProductRepository : IRepository
     {
-        private ProductDbContext _context = new ProductDbContext();
+        private readonly ProductDbContext _context = new ProductDbContext();
 
         public IEnumerable<Product> Products
         {
@@ -33,9 +33,9 @@ namespace SportStore.Models
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<Product> DeleteProductAsync(int productID)
+        public async Task<Product> DeleteProductAsync(int productId)
         {
-            Product dbEntry = _context.Products.Find(productID);
+            Product dbEntry = _context.Products.Find(productId);
             if (dbEntry != null)
             {
                 _context.Products.Remove(dbEntry);
@@ -60,9 +60,9 @@ namespace SportStore.Models
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<Order> DeleteOrderAsync(int orderID)
+        public async Task<Order> DeleteOrderAsync(int orderId)
         {
-            Order dbEntry = _context.Orders.Find(orderID);
+            Order dbEntry = _context.Orders.Find(orderId);
             if (dbEntry != null)
             {
                 _context.Orders.Remove(dbEntry);

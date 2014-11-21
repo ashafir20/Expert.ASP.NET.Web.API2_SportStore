@@ -7,9 +7,9 @@ namespace SportStore.Models
     {
         IEnumerable<Product> Products { get; }
         Task<int> SaveProductAsync(Product product);
-        Task<Product> DeleteProductAsync(int productID);
+        Task<Product> DeleteProductAsync(int productId);
         IEnumerable<Order> Orders { get; }
         Task<int> SaveOrderAsync(Order order);
-        Task<Order> DeleteOrderAsync(int orderID);
+        Task<Order> DeleteOrderAsync(int orderId);
     }
 }
