@@ -1,10 +1,25 @@
 ﻿<script>
+    
     var testAuth = function() {
         model.username('Admin');
         model.password('secret');
         authenticate();
     }
+
+    var testDeleteProduct = function () {
+        deleteProduct(2);
+    }
+
+    var testChangeProduct = function () {
+        var product = model.products()[2];
+        product.Price = product.Price + 10;
+        saveProduct(product);
+    }
+
 </script>
+
+<div class="alert alert-danger" data-bind="visible: model.gotError(), text: model.error()">
+</div>
 
 <div class="panel panel-primary">
     <div class="panel-heading">Authentication</div>
@@ -17,6 +32,18 @@
                     Authenticate
                 </button>
             </td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Product Controller Functions</div>
+    <table class="table table-striped">
+        <tr>
+            <td><button data-bind="click: getProducts">Get Products</button></td>
+            <td><button data-bind="click: testDeleteProduct">Delete Product</button></td>
+            <td><button data-bind="click: testChangeProduct">Change Product</button></td>
         </tr>
     </table>
 </div>
