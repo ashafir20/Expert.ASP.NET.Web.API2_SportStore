@@ -1,1 +1,22 @@
-﻿<h2>Client Content Will Go Here</h2>
+﻿<script>
+    var testAuth = function() {
+        model.username('Admin');
+        model.password('secret');
+        authenticate();
+    }
+</script>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Authentication</div>
+    <table class="table table-striped">
+        <tr><td>Authenticated:</td><td data-bind="text: model.authenticated()"></td></tr>
+        <tr><td>User:</td><td data-bind="text: model.username()"></td></tr>
+        <tr>
+            <td colspan="2">
+                <button data-bind="click: testAuth">
+                    Authenticate
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

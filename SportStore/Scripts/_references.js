@@ -5,4 +5,5 @@
 /// <reference path="storeAjax.js" />
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="storeModel.js" />
+/// <reference path="storeCommonController.js" />
 
