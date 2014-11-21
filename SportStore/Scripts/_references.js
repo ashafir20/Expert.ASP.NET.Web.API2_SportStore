@@ -6,4 +6,5 @@
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="storeModel.js" />
 /// <reference path="storeCommonController.js" />
+/// <reference path="storeproductscontroller.js" />
 
