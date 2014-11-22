@@ -10,6 +10,7 @@ var setCategory = function (category) {
     customerModel.selectedCategory(category);
     filterProductsByCategory();
 }
+
 var setView = function (view) {
     customerModel.currentView(view);
 }
