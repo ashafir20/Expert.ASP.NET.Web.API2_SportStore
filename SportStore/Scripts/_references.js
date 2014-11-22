@@ -7,4 +7,7 @@
 /// <reference path="storeModel.js" />
 /// <reference path="storeCommonController.js" />
 /// <reference path="storeproductscontroller.js" />
+/// <reference path="storeorderscontroller.js" />
+/// <reference path="storecustomermodel.js" />
+/// <reference path="storecustomercontroller.js" />
 

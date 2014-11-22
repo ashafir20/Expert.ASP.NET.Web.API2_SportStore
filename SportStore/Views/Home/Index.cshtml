@@ -16,6 +16,16 @@
         saveProduct(product);
     }
 
+    var testDeleteOrder = function () {
+        deleteOrder(1);
+    }
+
+    var testSaveOrder = function () {
+        var order = model.orders()[0];
+        order.TotalPrice = order.TotalPrice + 10;
+        saveOrder(order);
+    }
+
 </script>
 
 <div class="alert alert-danger" data-bind="visible: model.gotError(), text: model.error()">
@@ -44,6 +54,18 @@
             <td><button data-bind="click: getProducts">Get Products</button></td>
             <td><button data-bind="click: testDeleteProduct">Delete Product</button></td>
             <td><button data-bind="click: testChangeProduct">Change Product</button></td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Order Controller Functions</div>
+    <table class="table table-striped">
+        <tr>
+            <td><button data-bind="click: getOrders">Get Orders</button></td>
+            <td><button data-bind="click: testDeleteOrder">Delete Order</button></td>
+            <td><button data-bind="click: testSaveOrder">Save Order</button></td>
         </tr>
     </table>
 </div>
