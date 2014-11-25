@@ -10,4 +10,6 @@
 /// <reference path="storeorderscontroller.js" />
 /// <reference path="storecustomermodel.js" />
 /// <reference path="storecustomercontroller.js" />
+/// <reference path="storeadminmodel.js" />
+/// <reference path="storeadmincontroller.js" />
 
